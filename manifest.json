@@ -1,8 +1,7 @@
-
 {
     "name":"|| श्रीकृष्णविजय ||",
     "short_name":"पोथी",
-    "start_url":"http://192.168.29.230:8000/app.html",
+    "start_url":"https://sssmwebseva.github.io/PothiPWA/app.html",
     "display":"standalone",
     "background_color":"#5900b3",
     "theme_color":"brown",
