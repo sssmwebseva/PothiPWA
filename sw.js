@@ -49,21 +49,16 @@ e.waitUntil(
 
 self.addEventListener('fetch', e => {
   console.log("Service Worker: Fetching");
-  e.respondWith(
-    fetch(e.request)
-    .then(res => {
-      //Make a copy/clone of response
-      const resClone = res.clone();
-      caches
-      .open(CACHE_NAME)
-      .then(cache => {
-        //Add response to cache
-        cache.put(e.request, resClone);
-      });
-      return res;
-    })
-    .catch(err => caches.match(e.request).then(res => {
-		return res
-		}))
-	);
+  //Open the cache first
+  e.respondWith(caches.open(CACHE_NAME).then((cache) => {
+	// Go to network first
+	return fetch(e.request.url).then((fetchedResponse) => {
+		cache.put(e.request, fetchedResponse.clone());
+		return fetchedResponse;
+	}).catch(() => {
+		// If the network is unavailable, get
+        return cache.match(e.request.url);
+	});
+  }));
+
 });
