@@ -52,12 +52,12 @@ self.addEventListener('fetch', e => {
   //Open the cache first
   e.respondWith(caches.open(CACHE_NAME).then((cache) => {
 	// Go to network first
-	return fetch(e.request.url).then((fetchedResponse) => {
+	return fetch(e.request).then((fetchedResponse) => {
 		cache.put(e.request, fetchedResponse.clone());
 		return fetchedResponse;
 	}).catch(() => {
 		// If the network is unavailable, get
-        return cache.match(e.request.url);
+        return cache.match(e.request);
 	});
   }));
 
