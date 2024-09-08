@@ -55,10 +55,10 @@ self.addEventListener('fetch', e => {
 	return fetch(e.request).then((fetchedResponse) => {
 		cache.put(e.request, fetchedResponse.clone());
 		return fetchedResponse;
-	}).catch(() => {
-		// If the network is unavailable, get
-        return cache.match(e.request);
-	});
+	}).catch(err => cache.match(e.request).then(cachedResponse => {
+		return cachedResponse;	
+		// If the network is unavailable, get        
+	}));
   }));
 
 });
