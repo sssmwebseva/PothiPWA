@@ -53,7 +53,7 @@ self.addEventListener('fetch', e => {
   e.respondWith(caches.open(CACHE_NAME).then((cache) => {
 	// Go to network first
 	return fetch(e.request).then((fetchedResponse) => {
-		if(fetchedResponse.status == 100){
+		if(fetchedResponse.status == 200){
 		cache.put(e.request, fetchedResponse.clone());
 		return fetchedResponse;}
 		else{
