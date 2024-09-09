@@ -53,8 +53,15 @@ self.addEventListener('fetch', e => {
   e.respondWith(caches.open(CACHE_NAME).then((cache) => {
 	// Go to network first
 	return fetch(e.request).then((fetchedResponse) => {
+		if(fetchedResponse.status == 100){
 		cache.put(e.request, fetchedResponse.clone());
-		return fetchedResponse;
+		return fetchedResponse;}
+		else{
+			// If the network is available however website is down then serve from cache
+			cache.match(e.request).then(cachedResponse => {
+				return cachedResponse;			            
+			});			
+		}
 	}).catch(err => cache.match(e.request).then(cachedResponse => {
 		return cachedResponse;	
 		// If the network is unavailable, get        
