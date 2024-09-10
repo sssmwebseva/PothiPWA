@@ -24,61 +24,6 @@ self.addEventListener('install', e => {
   )
 });
 
-/*self.addEventListener('install', e => {
-  console.log('Service Worker: Installed');
-});*/
-/* 
-Activate event fires when the service worker is activated. So this is going to happen multiple times.
-Every time the app is launched. Whereas install happens only once when the Service Worker is registered
-
-
-self.addEventListener('activate', e => {
-
-console.log("Service Worker: Activated");
-//Remove old caches and keep only latest
-
-e.waitUntil(
-  caches.keys().then(cacheNames => {
-    return Promise.all(
-      cacheNames.map(cache => {
-        if ( cache !== CACHE_NAME ){
-          console.log("Service Worker: Clearing Old Cache");
-          return caches.delete(cache);
-        }
-      })
-    )
-  })
-)
-
-})*/
-
-/*self.addEventListener('fetch', e => {
-  console.log("Service Worker: Fetching");
-  //Open the cache first
-  e.respondWith(caches.open(CACHE_NAME).then((cache) => {
-	// Go to network first
-	return fetch(e.request).then((fetchedResponse) => {
-		if(fetchedResponse.status == 200){
-			cache.put(e.request, fetchedResponse.clone());
-			return fetchedResponse;
-		}
-		else{
-			cache.match(e.request).then(cachedResponse => {
-				
-			return cachedResponse;	
-		// If the network is unavailable, get        
-		})
-			
-		}
-
-	}).catch(err => cache.match(e.request).then(cachedResponse => {
-		return cachedResponse;	
-		// If the network is unavailable, get        
-	}));
-  }));
-
-});*/
-
 //Cache Only strategy
 self.addEventListener('fetch', (event) => {
   // Is this one of our precached assets?
