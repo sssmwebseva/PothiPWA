@@ -24,18 +24,20 @@ self.addEventListener('install', e => {
         //}
       })
     )
-  })
-  ).then(() => self.skipWaiting())
-
- /**/
-  e.waitUntil(
-    caches.open(CACHE_NAME)
-    .then( cache => {
-      console.log('Service Worker: Caching Files');
-      cache.addAll(CACHE_ASSETS);
+  }).then(
+            /**/
+      e.waitUntil(
+       caches.open(CACHE_NAME)
+       .then( cache => {
+       console.log('Service Worker: Caching Files');
+       cache.addAll(CACHE_ASSETS);
   })
   .then(() => self.skipWaiting())
- );
+    ); 
+   )
+  )
+
+
 });
 
 /*self.addEventListener('install', e => {
