@@ -7,7 +7,7 @@ const CACHE_ASSETS = [
   `${PREFIX}purva.json`,
   `${PREFIX}uttar.json`,
   `${PREFIX}img/bg.jpg`,
-  `${PREFIX}img/Swami.jpg`'
+  `${PREFIX}img/Swami.jpg`
 ];
 
 // Use the install event to pre-cache all initial resources.
