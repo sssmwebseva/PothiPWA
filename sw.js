@@ -1,12 +1,13 @@
 const CACHE_NAME = `shrikrishna-vijay-v1`;
+const PREFIX = '/PothiPWA/'
 const CACHE_ASSETS = [
-  '/app.html',
-  '/app.js',
-  '/app.css',
-  '/purva.json',
-  '/uttar.json',
-  '/img/bg.jpg',
-  '/img/Swami.jpg'
+  `${PREFIX}app.html`,
+  `${PREFIX}app.js`,
+  `${PREFIX}app.css`,
+  `${PREFIX}purva.json`,
+  `${PREFIX}uttar.json`,
+  `${PREFIX}img/bg.jpg`,
+  `${PREFIX}img/Swami.jpg`'
 ];
 
 // Use the install event to pre-cache all initial resources.
@@ -15,25 +16,12 @@ self.addEventListener('install', e => {
   
   /*Delete any old caches*/
   e.waitUntil(
-  caches.keys().then(cacheNames => {
-    return Promise.all(
-      cacheNames.map(cache => {
-        //if ( cache !== CACHE_NAME ){ Just clear all caches
-          console.log(`Service Worker: Clearing Old Cache ${cache}`);
-          return caches.delete(cache);
-        //}
-      })
-    )
-  })
- ).then(
-            /**/
-      e.waitUntil(
        caches.open(CACHE_NAME).then( cache => {
        console.log('Service Worker: Caching Files');
        cache.addAll(CACHE_ASSETS);
       } 
     )
-  ))
+  )
 });
 
 /*self.addEventListener('install', e => {
