@@ -87,7 +87,7 @@ self.addEventListener('fetch', (event) => {
 
   if (isPrecachedRequest) {
     // Grab the precached asset from the cache
-    event.respondWith(caches.open(cacheName).then((cache) => {
+    event.respondWith(caches.open(CACHE_NAME).then((cache) => {
       return cache.match(event.request.url);
     }));
   } else {
