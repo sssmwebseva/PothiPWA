@@ -1,6 +1,6 @@
 {
     "name":"|| श्रीकृष्णविजय ||",
-    "short_name":"पोथी",
+    "short_name":"|| श्रीकृष्णविजय ||",
     "start_url":"https://sssmwebseva.github.io/PothiPWA/app.html",
     "display":"standalone",
     "background_color":"#5900b3",
@@ -14,7 +14,7 @@
           "sizes": "512x512",
           "type": "image/png",
           "form_factor": "wide",
-          "label": "पोथी"
+          "label": "|| श्रीकृष्णविजय ||"
         }
   
    ],
@@ -24,7 +24,7 @@
          "sizes": "512x512",
          "type": "image/png",
          "form_factor": "wide",
-         "label": "पोथी"
+         "label": "|| श्रीकृष्णविजय ||"
        }
 
    ]

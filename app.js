@@ -226,7 +226,7 @@ class Pages {
         let pageNumber = this.getPageNumber();
 
         if (mode === "next"){
-            if (pageNumber < this.pages.length) {
+            if (pageNumber < (this.pages.length - 1)) {
                 pageNumber++;
             }    
         }
@@ -579,7 +579,7 @@ function displayChapterListPage() {
     rootNode.appendChild(navbarChild);
 
     const chapterListPaneChild = document.createElement("div");
-    chapterListPaneChild.classList.add("flex", "flex-col", "content-center", "justify-items-center", "overflow-y-scroll", "items-center", "gap-2", "bg-[url('/img/bg.jpg')]", "w-full");
+    chapterListPaneChild.classList.add("flex", "flex-col", "content-center", "justify-items-center", "overflow-y-scroll", "items-center", "gap-2", "bg-[url('/PothiPWA/img/bg.jpg')]", "w-full");
      for (let i = 0; i < volumes[currentVolume].index.length; i++) {
         let id = volumes[currentVolume].index[i];
         let title = volumes[currentVolume].chapters[id].title;
