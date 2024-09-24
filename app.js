@@ -228,7 +228,7 @@ class Pages {
         if (mode === "next"){
             if (pageNumber < (this.pages.length - 1)) {
                 pageNumber++;
-            }    
+            }   
         }
         else if(mode === "prev"){
             if (pageNumber > 0) {
@@ -726,7 +726,7 @@ function createSizeFontArea(darkModeClasses){
     sizeFontArea.classList.add("col-span-2", "text-center", "py-10", "border-2", "border-orange-900", "my-10");
     const tokens = darkModeClasses.split(" ");
     tokens.forEach(token => {
-        sizeFontArea.classList.add("token");
+        sizeFontArea.classList.add(token);
     });
 
     sizeFontArea.id="sizefontarea";
@@ -803,6 +803,7 @@ function createContentPane(darkModeClasses, contentFontSize, contentFont, pageSp
     //pageContainer.classList.add("flex-1","px-5", "py-2",  "overflow-y-auto", "leading-10");
     pageContainer.classList.add("flex-1","px-5", "py-2");
     pageContainer.classList.add("text-center");
+    pageContainer.classList.add("w-full");
     pageContainer.style.fontFamily = contentFont;
 
     const fontSize  = Theme.textToFontSize[contentFontSize];
