@@ -556,8 +556,9 @@ function createChapterListNavBar(indexTitle){
 
 function createChapterButton(buttonText, buttonHandlerArg){
     const buttonChild = document.createElement("div");
+    buttonChild.classList.add("w-5/6");
     const button = document.createElement("button");
-    button.classList.add("border-solid", "border-2", "rounded-md", "p-2", "border-orange-900", "border-offset-2");
+    button.classList.add("border-solid", "border-2", "rounded-md", "p-2", "border-orange-900", "border-offset-2", "w-full");
     const buttonSpan = document.createElement("span");    
     buttonSpan.innerText = buttonText;
     button.appendChild(buttonSpan);
@@ -579,7 +580,7 @@ function displayChapterListPage() {
     rootNode.appendChild(navbarChild);
 
     const chapterListPaneChild = document.createElement("div");
-    chapterListPaneChild.classList.add("flex", "flex-col", "content-center", "justify-items-center", "overflow-y-scroll", "items-center", "gap-2", "bg-[url('/PothiPWA/img/bg.jpg')]", "w-full");
+    chapterListPaneChild.classList.add("flex", "flex-col", "content-center", "justify-items-center", "overflow-y-scroll", "items-center", "gap-2", "bg-[url('/img/bg.jpg')]", "w-full");
      for (let i = 0; i < volumes[currentVolume].index.length; i++) {
         let id = volumes[currentVolume].index[i];
         let title = volumes[currentVolume].chapters[id].title;
