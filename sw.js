@@ -4,7 +4,7 @@ const CACHE_ASSETS = [
   `${PREFIX}app.html`,
   `${PREFIX}app.js`,
   `${PREFIX}app.css`,
-  `${PREFIX}manifest.json`
+  `${PREFIX}manifest.json`,
   `${PREFIX}purva.json`,
   `${PREFIX}uttar.json`,
   `${PREFIX}img/bg.jpg`,
