@@ -387,15 +387,15 @@ function displayCoverPage() {
     removeAllChildren(rootNode);
 
     const authorChild = document.createElement("div");
-    authorChild.classList.add("text-base", "my-5", "text-gray-500");
+    authorChild.classList.add("text-2xl", "my-5", "text-gray-500");
     authorChild.innerText = "कै. गणेश नारायण मुजुमदार रचित";   
 
     const bookNameChild = document.createElement("div");
-    bookNameChild.classList.add("text-xl", "my-5", "text-gray-500");
+    bookNameChild.classList.add("text-5xl", "my-5", "text-gray-500");
     bookNameChild.innerText = "|| श्रीकृष्णविजय ||";
     
     const volumeNamesChild = document.createElement("div");
-    volumeNamesChild.classList.add("text-sm", "my-1", "text-gray-500");
+    volumeNamesChild.classList.add("text-2xl", "my-1", "text-gray-500");
     volumeNamesChild.innerText = "(पूर्वार्ध आणि उत्तरार्ध)";
     
     const introPageButtonChild = document.createElement("div");
@@ -427,7 +427,7 @@ function displayIntroPage() {
     imageChild.appendChild(imageTag);
 
     const nameChild = document.createElement("div");
-    nameChild.classList.add("text-lg", "text-blue-500")
+    nameChild.classList.add("text-xl", "text-blue-500")
     nameChild.textContent = "श्रीकृष्ण सरस्वती दत्त महाराज";
 
     const birthChild = document.createElement("div");
@@ -463,11 +463,11 @@ function createVolumeNameButton(volumeButtonDiv, volId){
     volumeNameButton.classList.add("border-solid", "border-2", "rounded-md", "p-2", "border-red-700", "border-offset-2", "my-5");
 
     const bookNamePara = document.createElement("p");
-    bookNamePara.classList.add("text-blue-500", "text-lg");
+    bookNamePara.classList.add("text-blue-500", "text-3xl");
     bookNamePara.innerText = "|| श्रीकृष्णविजय ||"
 
     const volumeNamePara = document.createElement("p");
-    volumeNamePara.classList.add("text-red-700", "text-sm");
+    volumeNamePara.classList.add("text-red-700", "text-2xl");
 
     if (volId === "purva"){
         volumeNamePara.innerText = "पूर्वचरित्र";
@@ -488,7 +488,7 @@ function displayVolumesListPage() {
     removeAllChildren(rootNode);
 
     const authorChild = document.createElement("div");
-    authorChild.classList.add("text-lg", "text-red-700", "py-5");
+    authorChild.classList.add("text-3xl", "text-red-700", "py-5");
     authorChild.textContent = "कै. गणेश नारायण मुजुमदार रचित";
 
     const purvaChild = document.createElement("div");
@@ -538,7 +538,7 @@ function createNavButton(buttonText, buttonHandler){
 function createChapterListNavBar(indexTitle){
     const navbarParent = document.createElement("div");
     navbarParent.classList.add("flex", "flex-row", "grow-0", "justify-between", "items-center", "py-2", "text-white", "bg-orange-900", "h-auto", "w-full", "text-center");
-    
+    navbarParent.classList.add("text-xl");
     const leftButtonChild = createNavButton("arrow_back", displayVolumesListPage);
 
     const centerTextChild = document.createElement("div");
@@ -554,12 +554,15 @@ function createChapterListNavBar(indexTitle){
 
 }
 
-function createChapterButton(buttonText, buttonHandlerArg){
+function createChapterButton(buttonText, buttonHandlerArg, isCurrent){
     const buttonChild = document.createElement("div");
     buttonChild.classList.add("w-5/6");
     const button = document.createElement("button");
-    button.classList.add("border-solid", "border-2", "rounded-md", "p-2", "border-orange-900", "border-offset-2", "w-full");
-    const buttonSpan = document.createElement("span");    
+    const textColour = isCurrent ? "text-orange-600":"text-black";
+    
+    button.classList.add("border-solid", "border-2", "rounded-md", "p-2", "border-orange-900" , "border-offset-2", "w-full");
+    const buttonSpan = document.createElement("span");
+    buttonSpan.className = `${textColour} text-2xl`;    
     buttonSpan.innerText = buttonText;
     button.appendChild(buttonSpan);
     let displayContentHandler = function(){displayContent(buttonHandlerArg);};
@@ -581,10 +584,12 @@ function displayChapterListPage() {
 
     const chapterListPaneChild = document.createElement("div");
     chapterListPaneChild.classList.add("flex", "flex-col", "content-center", "justify-items-center", "overflow-y-scroll", "items-center", "gap-2", "bg-[url('img/bg.jpg')]", "w-full");
+    const chapterId = Chapter.getCurrentChapterId()
      for (let i = 0; i < volumes[currentVolume].index.length; i++) {
         let id = volumes[currentVolume].index[i];
         let title = volumes[currentVolume].chapters[id].title;
-        chapterButton = createChapterButton(title,id);
+        const isCurrent = chapterId === id ? true : false;
+        chapterButton = createChapterButton(title,id,isCurrent);
         chapterListPaneChild.appendChild(chapterButton);
     }
     
@@ -783,7 +788,7 @@ function displayFontSettingsPage() {
 function createContentPageNavBar(indexTitle){
     const navbarParent = document.createElement("div");
     navbarParent.classList.add("flex", "flex-row", "flex-none", "justify-between", "items-center", "px-2", "py-1.5", "text-white", "bg-orange-900", "h-auto", "w-full", "text-center");
-    
+    navbarParent.classList.add("text-xl")
     const leftButtonChild = createNavButton("arrow_back", displayChapterListPage);
 
     const centerTextChild = document.createElement("div");
