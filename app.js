@@ -749,7 +749,7 @@ function createFontSettingsPane(darkModeFlag, contentFont, darkModeClasses,conte
     const labelDarkMode = createLabel("darkmode","Dark Mode");
     const darkModeInput = createDarkModeInput(darkModeFlag,setDarkMode);
     const labelTextSize = createLabel("textsize","Text Size");
-    const textSizeSelectBox = createTextSizeSelectBox();
+    const textSizeSelectBox = createTextSizeSelectBox(contentFontSize);
     const labelFont = createLabel("fontsel","Set Font Style");
     const fontStyleSelectBox = createFontSelectBox(contentFont);
     const sizeFontArea = createSizeFontArea(darkModeClasses);
@@ -764,9 +764,11 @@ function createFontSettingsPane(darkModeFlag, contentFont, darkModeClasses,conte
 }
 
 function displayFontSettingsPage() {
-    let prevLocation = window.location.href;
-    let onclickstring = function() {window.location.replace(prevLocation);}
-    console.log(prevLocation);
+    /*let prevLocation = window.location.href;
+    let onclickstring = function() {window.location.replace(prevLocation);}*/
+    let chapterId = Chapter.getCurrentChapterId();
+    let onclickstring = function() {displayContent(chapterId);}
+    //console.log(prevLocation);
     let contentFontSize = Theme.getContentFontSize();
     let contentFont = Theme.getContentFont();
     let darkModeClasses = Theme.getDarkModeClasses();
@@ -809,6 +811,7 @@ function createContentPane(darkModeClasses, contentFontSize, contentFont, pageSp
     //pageContainer.classList.add("flex-1","px-5", "py-2",  "overflow-y-auto", "leading-10");
     pageContainer.classList.add("flex-1","px-5", "py-2");
     pageContainer.classList.add("text-center");
+    pageContainer.classList.add("h-full");
     pageContainer.classList.add("w-full");
     pageContainer.style.fontFamily = contentFont;
 
