@@ -170,6 +170,7 @@ class Page{
     }
     static getPage(start,end){
         const pageSpan = document.createElement("span");
+        pageSpan.id = "pageSpan";
         for(let lineno=start; lineno<end; lineno++){
             let para = document.createElement("p");
             para.textContent = Chapter.content[lineno];
@@ -185,18 +186,22 @@ class Pages {
         this.pages = [];
         const contentLength = Chapter.content.length;
         const pageContent = document.getElementById("pageContent");
+        
+        const pageNavBar = document.getElementById("pageNavBar");
+        const pageTurnBar = document.getElementById("pageTurnBar");
         const documentBody = document.body;
 
         let lineStart=0;
         let lineEnd = 1;
-        const innerHeight = window.innerHeight - 50;
+        const innerHeight = window.innerHeight - 50 - pageNavBar.scrollHeight - pageTurnBar.scrollHeight;
         //const innerHeight = window.innerHeight;
         while(true){
             removeAllChildren(pageContent);
             let pageSpan = Page.getPage(lineStart, lineEnd); 
-            //pageSpan.style.fontSize = "xx-large"; Earlier Fix for TailWind CSS Rendering (CSS Does not get expanded in time)        
+            //pageSpan.style.fontSize = "xx-large"; Earlier Fix for TailWind CSS Rendering (CSS Does not get expanded in time)     
+             
             pageContent.appendChild(pageSpan);
-            let scrollHeight = pageContent.scrollHeight;
+            let scrollHeight = pageSpan.getBoundingClientRect().height;
             //let scrollHeight = documentBody.scrollHeight;
             //The purpose of this block is to cut pages
             if ((scrollHeight >= innerHeight) || (lineEnd >= contentLength)){
@@ -797,6 +802,7 @@ function createContentPageNavBar(indexTitle){
     centerTextChild.innerText = `${indexTitle}`;
 
     const rightButtonChild = createNavButton("settings", displayFontSettingsPage);
+    navbarParent.id = "pageNavBar";
 
     navbarParent.appendChild(leftButtonChild);
     navbarParent.appendChild(centerTextChild);
@@ -834,6 +840,7 @@ function createPageTurnBar(){
     pageTurnParent.classList.add("flex", "text-xl", "h-auto", "border-2","border-amber-800","text-center");
     const prevPageChild = createNavButton("chevron_left",function(){Pages.gotoPage('prev');});
     const nextPageChild = createNavButton("chevron_right",function(){Pages.gotoPage('next');});
+    pageTurnParent.id = "pageTurnBar";
     pageTurnParent.appendChild(prevPageChild);
     pageTurnParent.appendChild(nextPageChild);
     return pageTurnParent;
