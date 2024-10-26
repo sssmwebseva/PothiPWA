@@ -1,47 +1,41 @@
 @font-face {
-  font-family: 'Default' ;
-  src: url(fonts/0_default);
+  font-family: 'Default';
+  src: url('./fonts/0_default.ttf');
   font-weight: normal;
   font-style: normal;
-
 }
 
 @font-face {
-  font-family: 'Akshar' ;
-  src: url(fonts/1_akshar.ttf);
+  font-family: 'Akshar';
+  src: local('Akshar'), url('./fonts/1_akshar.ttf');
   font-weight: normal;
   font-style: normal;
-
 }
 
 @font-face {
   font-family: 'Kanak';
-  src: url(fonts/2_kanak.ttf);
+  src: local('Marathi-Kanak'), url('./fonts/2_kanak.ttf');
   font-weight: normal;
   font-style: normal;
-
 }
 
 @font-face {
   font-family: 'Mangal';
-  src: url(fonts/3_mangal.ttf);
+  src: local('Mangal'), url('./fonts/3_mangal.ttf');
   font-weight: normal;
   font-style: normal;
-
 }
 
 @font-face {
   font-family: 'Kiran';
-  src: url(fonts/4_kiran.ttf);
+  src: local('Kiran'), url('./fonts/4_kiran.ttf');
   font-weight: normal;
   font-style: normal;
-
 }
 
 @font-face {
   font-family: 'Sharada';
-  src: url(fonts/5_sharada.ttf);
+  src: local('Marathi-Sharada'), url('./fonts/5_sharada.ttf');
   font-weight: normal;
   font-style: normal;
-
 }
