@@ -373,6 +373,10 @@ window.onload = function () {
     fetchVolumeData();
 }
 
+window.onbeforeunload = function() {
+    return "Do you want to refresh?";
+}
+
 window.onpopstate = function (e) {
     console.log("In onpopstate");
     if (e.state != null) {
